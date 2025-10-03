@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdAdd ,  MdOutlineHome  } from "react-icons/md";
 import MoreMenu from "./MoreMenu";
 import { usePathname } from "next/navigation";
+import LanguageMenu from "./LanguageMenu";
 const NavBar = () => {
      const pathname = usePathname()
     return ( 
@@ -15,7 +16,7 @@ const NavBar = () => {
             <MoreMenu />
         </div>
         <div className="flex gap-6">
-            
+            <LanguageMenu />
             <Link href="/createAd" className=" outline-none cursor-pointer flex flex-col md:flex-row text-lg  items-center justify-center gap-1 transition-colors duration-300 py-1.5 rounded px-4 font-normal md:bg-violet-600  md:text-white md:hover:bg-violet-500 ">
                 <span className="text-2xl md:text-xl"><MdAdd /></span><span className="md:hidden">add product</span><span className="hidden md:inline">Create an Ad</span>
             </Link>
