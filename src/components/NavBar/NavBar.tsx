@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { MdAdd ,  MdOutlineHome  } from "react-icons/md";
-
+import MoreMenu from "./MoreMenu";
 import { usePathname } from "next/navigation";
 const NavBar = () => {
      const pathname = usePathname()
@@ -12,7 +12,7 @@ const NavBar = () => {
         <div className="flex gap-8">
             <Link href="/" className={`text-lg py-1 rounded  px-2 md:hover:bg-violet-200 md:hover:text-violet-700 transition-colors duration-300 flex flex-col items-center justify-center md:dark:hover:bg-violet-950 md:dark:hover:text-white ${ pathname === "/" ? "text-violet-500 md:text-black" : ""}`}>   <span className="md:hidden"><MdOutlineHome size={24}/></span> Home</Link>
             <Link href="/Favorites" className=" hidden md:inline text-lg py-1 rounded  px-2 hover:bg-violet-200 hover:text-violet-700 transition-colors duration-300 dark:hover:bg-violet-950 dark:hover:text-white">Favorites</Link>
-            
+            <MoreMenu />
         </div>
         <div className="flex gap-6">
             
