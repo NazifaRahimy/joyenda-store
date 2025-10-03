@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-
+import NavBar from "@/components/NavBar/NavBar";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        {children}
+        <div className="dark:bg-[#181818] dark:text-white ">
+        <Providers >
+          <NavBar />
+          {children}
+        </Providers>
+        </div>
       </body>
     </html>
   );
