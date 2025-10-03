@@ -6,6 +6,7 @@ import MoreMenu from "./MoreMenu";
 import { usePathname } from "next/navigation";
 import LanguageMenu from "./LanguageMenu";
 import ThemeMenu from "./ThemeMenu";
+import LoginMenu from "./LoginMenu";
 const NavBar = () => {
      const pathname = usePathname()
     return ( 
@@ -22,7 +23,7 @@ const NavBar = () => {
                 <span className="text-2xl md:text-xl"><MdAdd /></span><span className="md:hidden">add product</span><span className="hidden md:inline">Create an Ad</span>
             </Link>
             <ThemeMenu />
-        
+            <LoginMenu />
         </div>
         <Link href="/MyProfile" className={` outline-none cursor-pointer text-lg  items-center justify-center gap-1 transition-colors duration-300  md:hidden md:bg-violet-600  md:text-white flex flex-col md:flex-row md:hover:bg-violet-500 py-1.5 rounded px-4 font-normal ${ pathname === "/MyProfile" ? "text-violet-500 md:text-black" : ""}`}>
             <span ><CgProfile size={24}/></span><span className="md:hidden">my profile</span>
