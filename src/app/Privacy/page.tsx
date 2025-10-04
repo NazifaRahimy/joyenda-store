@@ -1,8 +1,9 @@
 import PrivacyHeader from "@/components/HeaderMobile/PrivacyHeader";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 const Privacy = () => {
     return (
        <main className="p-8 fixed top-0 left-0 h-screen overflow-auto w-full z-50 dark:bg-[#181818] dark:text-white bg-white md:h-auto md:z-auto  md:relative md:top-5 mx-auto max-w-7xl ">
-        <Privacy />
+        <PrivacyHeader/>
         <div className="w-full max-w-4xl mx-auto px-6 mt-20 ">
             <h1 className="text-4xl tracking-wide font-bold">Privacy Policy</h1>
             <p className="mt-5 text-xl">این یک نسخه نمایشی از صفحه قوانین سایت است</p>
@@ -37,7 +38,7 @@ const Privacy = () => {
                 </ul>
             </div>
         </div>
-      
+        <ScrollToTopButton />
     </main>
       );
 }

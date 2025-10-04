@@ -2,6 +2,7 @@ import { IoMdCheckmark, IoIosAdd } from "react-icons/io";
 import Link from "next/link";
 import AboutHeader from "@/components/HeaderMobile/AboutHeader";
 import Fotter from "@/components/Fotter";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 const About = () => {
     return ( 
       <>
@@ -120,6 +121,7 @@ const About = () => {
        
     </main>
     <Fotter />
+    <ScrollToTopButton />
     </>
      );
 }
