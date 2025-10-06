@@ -1,6 +1,6 @@
 "use client"
 import { MdOutlineLanguage } from "react-icons/md";
-
+import ContactHeader from "./HeaderMobile/ContactHeader";
 import { useState } from "react";
 interface ContactErrors {
   First_name?: string;
@@ -82,7 +82,7 @@ const MobileContact = () => {
 
     return ( 
         <div className="fixed w-full top-0 left-0 h-screen overflow-y-auto dark:bg-[#232323] z-20 md:hidden bg-gray-200">
-            
+            <ContactHeader />
             <div className="w-full h-auto py-7 px-8 mt-20">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     <div className="flex flex-col gap-2">
