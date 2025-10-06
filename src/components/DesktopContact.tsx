@@ -1,7 +1,8 @@
 "use client"
-import { useState } from "react";
+import {  useState } from "react";
 import { MdOutlineLanguage , MdAdd} from "react-icons/md";
 import { TbBrandFacebook } from "react-icons/tb";
+import ScrollToTopButton from "./ScrollToTopButton";
 interface ContactErrors {
   First_name?: string;
   Last_name?: string;
@@ -12,7 +13,7 @@ interface ContactErrors {
   Message?: string;
 }
 import { FaInstagram,  FaTelegram , FaWhatsapp } from "react-icons/fa";
-const DesktopContact =( )=> {
+const DesktopContact =( {children,}: {children: React.ReactNode})=> {
      const [user, setUser]= useState({First_name :"", Last_name:"", Email:"", Company_name:"", Phone_number:"", Subject:"", Message:""})
      const [contactErrors, setContactErrors] =useState<ContactErrors>({First_name :"", Last_name:"", Email:"", Phone_number:"", Message:""})
        const [touched, setTouched] = useState({
@@ -170,8 +171,8 @@ const DesktopContact =( )=> {
             </div>
 
         </div>
-        
-     
+        {children}
+        <ScrollToTopButton />
         </div>
      );
 }
