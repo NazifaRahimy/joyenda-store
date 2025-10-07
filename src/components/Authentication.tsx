@@ -3,7 +3,7 @@ import {  useEffect, useState } from "react";
 import { IoClose,IoEye  } from "react-icons/io5";
 import { PiEyeClosedBold } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
-
+import GoogleButton from "./GoogleButton";
 import Link from "next/link";
 
 interface AuthenticationProps {
@@ -197,7 +197,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                     </div>
                     {login === "login" ? ( <button onClick={ handleLogin}  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  onClick={handleRegister} className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	`}> <span><FaPlus /></span><span  >Register </span></button>)}
                 </form>
-                
+                <GoogleButton />
             </div>
         </div>
     )
