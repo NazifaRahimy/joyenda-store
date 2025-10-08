@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IoEye  } from "react-icons/io5";
 import { PiEyeClosedBold } from "react-icons/pi";
 import { useState } from "react";
-
+import Image from "next/image";
 
     const LoginMobile = () => {
         const [showPassword, setShowPassword] = useState(false);
@@ -34,10 +34,10 @@ import { useState } from "react";
                 <button type="button" className=" my-6  text-blue-400  border-b border-b-transparent hover:border-b hover:border-red-500 text-[18px] outline-none tracking-wide text-left">	Forget Password ?	</button> 
                 <button  type="submit" className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-3 rounded-full text-xl font-semibold w-full flex  items-center justify-center  	`}><span> Login</span></button>
                 <div className=" flex items-center px-4 my-5">
-			        <span className="px-4 text-[16px] tracking-wide">Don'n have an account ?		</span> 
+			        <span className="px-4 text-[16px] tracking-wide">Don not have an account ?		</span> 
                     <span  className=" text-violet-600  text-[16px] tracking-wide"> Registration	</span>
 		 	    </div>
-                <button  className=" px-8 py-2 rounded-full border-2 border-black w-full flex items-center justify-between text-xl   tracking-wide" >Sign with Google <img className="w-10" src="google.png" alt="google" /></button>
+                <button  className=" px-8 py-2 rounded-full border-2 border-black w-full flex items-center justify-between text-xl   tracking-wide" >Sign with Google <Image src="/google.png" alt="google" width={40} height={40} /></button>
                 <div className="flex items-center gap-2 my-5">
                     <input className="w-5 h-5 border-2 border-black rounded" type="checkbox"  id="agree"  />
                     <label htmlFor="agree" className="text-md tracking-wide"> I agree to the Privacy Policy <Link href="/Privacy" className="text-violet-500 underline-none tracking-wide underline">Privacy Policy</Link></label>
