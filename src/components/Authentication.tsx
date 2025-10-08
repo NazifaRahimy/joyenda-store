@@ -5,7 +5,7 @@ import { PiEyeClosedBold } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
 import GoogleButton from "./GoogleButton";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 interface AuthenticationProps {
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: boolean;
@@ -16,6 +16,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
     const [login, setLogin] = useState(initialForm);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const router = useRouter();
     const [formData, setformData] = useState({ first_name: "", last_name:"", email: "",  password: "",confirm_password:""})
     const [formErrors, setFormErrors] = useState<Record<string, string>>({ email: "", password: "", first_name: "", last_name:""});
     
@@ -65,7 +66,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                 localStorage.setItem("auth-token", token);
                 localStorage.setItem("auth-name", data.first_name );
                 localStorage.setItem("auth-email", data.email);
-                window.location.replace("/");
+                router.replace("/");
             }
             else {
                 alert(data.message || "Login failed");
@@ -125,7 +126,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                     password: "",
                     confirm_password: ""
                 });
-                window.location.replace("/");
+                router.replace("/");
             } else {
                 alert(data.message || "Register failed");
             }
@@ -157,7 +158,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
 		            <button onClick={()=> setLogin("login")}   className={`w-[195px] px-6 py-1 rounded ${login === "login" ? "bg-white dark:bg-[#1a1a1a] dark:text-white " : "bg-gray-100 dark:bg-[#282828] dark:text-gray-400" }`}>Login</button>
 		            <button onClick={()=> setLogin("register")}  className={`w-[195px] px-6 py-1 rounded ${login === "register" ? "bg-white  dark:bg-[#1a1a1a]  dark:text-white" : "bg-gray-100 dark:bg-[#282828] dark:text-gray-400" }`}>Register</button>
 				</div>
-                <form className="flex flex-col gap-3">
+                <form onSubmit={login === "login" ? handleLogin : handleRegister} className="flex flex-col gap-3">
                     <div className="w-full flex gap-2">
                        { login === "register" ?
                             (<div >
@@ -195,7 +196,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                         <input className="w-5 h-5 border-2 border-black rounded" type="checkbox"  id="agree"  />
                         <label htmlFor="agree" className="text-md tracking-wide"> I agree to the Privacy Policy <Link href="/Privacy" className="text-violet-500 tracking-wide underline">Privacy Policy</Link></label>
                     </div>
-                    {login === "login" ? ( <button onClick={ handleLogin}  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  onClick={handleRegister} className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	`}> <span><FaPlus /></span><span  >Register </span></button>)}
+                    {login === "login" ? ( <button type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	`}> <span><FaPlus /></span><span  >Register </span></button>)}
                 </form>
                 <GoogleButton />
             </div>
