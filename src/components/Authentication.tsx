@@ -19,7 +19,9 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
     const router = useRouter();
     const [formData, setformData] = useState({ first_name: "", last_name:"", email: "",  password: "",confirm_password:""})
     const [formErrors, setFormErrors] = useState<Record<string, string>>({ email: "", password: "", first_name: "", last_name:""});
-    
+    const [agree, setAgree]= useState(false);
+
+
     const isValidEmail = (email: string) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
@@ -202,10 +204,10 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                         </div>
                         ): <></>}
                     <div className="flex items-center gap-2 my-5">
-                        <input className="w-5 h-5 border-2 border-black rounded" type="checkbox"  id="agree"  />
+                        <input className="w-5 h-5 border-2 border-black rounded" type="checkbox"  id="agree" checked={agree}  onChange={(e)=> setAgree(e.target.checked)} />
                         <label htmlFor="agree" className="text-md tracking-wide"> I agree to the Privacy Policy <Link href="/Privacy" className="text-violet-500 tracking-wide underline">Privacy Policy</Link></label>
                     </div>
-                    {login === "login" ? ( <button type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	`}> <span><FaPlus /></span><span  >Register </span></button>)}
+                    {login === "login" ? ( <button type="submit"  disabled={!agree} className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2  ${!agree ? "opacity-40 cursor-not-allowed" : ""}	 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  disabled={!agree} type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	 ${!agree ? "opacity-40 cursor-not-allowed" : ""}	`}> <span><FaPlus /></span><span  >Register </span></button>)}
                 </form>
                 <GoogleButton />
             </div>
