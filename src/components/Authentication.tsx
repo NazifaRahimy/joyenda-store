@@ -66,6 +66,14 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                 localStorage.setItem("auth-token", token);
                 localStorage.setItem("auth-name", data.first_name );
                 localStorage.setItem("auth-email", data.email);
+                  setformData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    password: "",
+                    confirm_password: ""
+                });
+                setShowModal(false)
                 router.replace("/");
             }
             else {
@@ -127,6 +135,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                     confirm_password: ""
                 });
                 router.replace("/");
+                setShowModal(false)
             } else {
                 alert(data.message || "Register failed");
             }
