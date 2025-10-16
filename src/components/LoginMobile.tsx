@@ -37,8 +37,8 @@ import Image from "next/image";
                 const user = result.user;
 
                 localStorage.setItem("auth-token", await user.getIdToken());
-                 localStorage.setItem("auth-name", user.displayName);
-                localStorage.setItem("auth-email", user.email);
+                 localStorage.setItem("auth-name", user.displayName || "");
+                localStorage.setItem("auth-email", user.email || "");
                 alert("Login with google successful");
                 router.push("/");
             } catch (error) {

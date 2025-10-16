@@ -19,8 +19,8 @@ const GoogleButton = ({agree, setShowModal}: GoogleButtonProps) => {
       const user = result.user;
 
       localStorage.setItem("auth-token", await user.getIdToken());
-      localStorage.setItem("auth-name", user.displayName);
-      localStorage.setItem("auth-email", user.email);
+      localStorage.setItem("auth-name", user.displayName || "");
+      localStorage.setItem("auth-email", user.email || "");
       window.dispatchEvent(new Event("storageChange"));
       alert(`خوش آمدی ${user.displayName}!`);
       setShowModal(false)
