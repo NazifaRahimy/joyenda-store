@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import GoogleButton from "./GoogleButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 interface AuthenticationProps {
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: boolean;
@@ -68,6 +69,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                 localStorage.setItem("auth-token", token);
                 localStorage.setItem("auth-name", data.first_name );
                 localStorage.setItem("auth-email", data.email);
+                window.dispatchEvent(new Event("storageChange"));
                   setformData({
                     first_name: "",
                     last_name: "",
@@ -129,6 +131,7 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                 localStorage.setItem("auth-token", token);
                 localStorage.setItem("auth-name", data.first_name);
                 localStorage.setItem("auth-email", data.email);
+                window.dispatchEvent(new Event("storageChange"));
                 setformData({
                     first_name: "",
                     last_name: "",
@@ -209,7 +212,8 @@ export default function Authentication ({ setShowModal,  showModal , initialForm
                     </div>
                     {login === "login" ? ( <button type="submit"  disabled={!agree} className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex  items-center justify-center gap-2  ${!agree ? "opacity-40 cursor-not-allowed" : ""}	 	`}><span  ><FaPlus/></span><span> Login</span></button>): (  <button  disabled={!agree} type="submit"  className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-2 rounded w-full flex items-center justify-center gap-2 	 ${!agree ? "opacity-40 cursor-not-allowed" : ""}	`}> <span><FaPlus /></span><span  >Register </span></button>)}
                 </form>
-                <GoogleButton />
+                <GoogleButton agree={agree} setShowModal={setShowModal} />
+
             </div>
         </div>
     )

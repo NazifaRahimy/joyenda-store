@@ -4,7 +4,10 @@ import { IoEye  } from "react-icons/io5";
 import { PiEyeClosedBold } from "react-icons/pi";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
 import Image from "next/image";
+ 
 
     const LoginMobile = () => {
         const [showPassword, setShowPassword] = useState(false);
@@ -23,8 +26,27 @@ import Image from "next/image";
         const isValidEmail = (email: string) => {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         };
-    
 
+        const handleGoogleLogin = async () => {
+            if (!agree) {
+                alert("You must agree to the Privacy Policy first!");
+                return;
+            }
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+
+                localStorage.setItem("auth-token", await user.getIdToken());
+                 localStorage.setItem("auth-name", user.displayName);
+                localStorage.setItem("auth-email", user.email);
+                alert("Login with google successful");
+                router.push("/");
+            } catch (error) {
+                console.error("Error during Google login:", error);
+                alert("Login with google failed");
+            }
+        };
+    
         const handleLogin = async (e: React.FormEvent<HTMLFormElement>)=>{
             e.preventDefault();
 
@@ -50,7 +72,7 @@ import Image from "next/image";
                 })
                 const data = await response.json();
                 if(response.ok){
-                    const token = "test-token-123"; // توکن تستی
+                    const token = "test-token-123"; 
                     alert("Login successful");
                     localStorage.setItem("auth-token", token);
                     localStorage.setItem("auth-name", data.first_name );
@@ -90,7 +112,7 @@ import Image from "next/image";
 			        <span className="px-4 text-[16px] tracking-wide">Don not have an account ?		</span> 
                     <span  className=" text-violet-600  text-[16px] tracking-wide"> Registration	</span>
 		 	    </div>
-                <button  type="button"  className=" px-8 py-2 rounded-full border-2 border-black w-full flex items-center justify-between text-xl   tracking-wide" >Sign with Google <Image src="/google.png" alt="google" width={40} height={40} /></button>
+                <button  type="button" onClick={handleGoogleLogin}   className={` px-8 py-2 rounded-full border-2 border-black w-full flex items-center justify-between text-xl   tracking-wide ${    !agree ? "opacity-40 cursor-not-allowed" : ""}`} >Sign with Google <Image src="/google.png" alt="google" width={40} height={40} /></button>
                 <div className="flex items-center gap-2 my-5">
                     <input className={`w-5 h-5 border-2 border-black rounded ${agree ? "bg-violet-500": ""}`} type="checkbox" checked={agree}   id="agree" onChange={(e)=> setAgree(e.target.checked)} />
                     <label htmlFor="agree" className="text-md tracking-wide"> I agree to the Privacy Policy <Link href="/Privacy" className="text-violet-500 underline-none tracking-wide underline">Privacy Policy</Link></label>
