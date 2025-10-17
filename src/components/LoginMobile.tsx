@@ -93,13 +93,13 @@ import Image from "next/image";
 
  
     return ( 
-        <div className="w-full h-screen bg-gray-100 fixed top-0 left-0 px-8 py-5 ">
+        <div className="w-full h-screen dark:bg-[#101010] text-white bg-gray-100 fixed top-0 left-0 px-8 py-5 z-30">
             <div className="w-full h-auto mt-5 gap-5  flex flex-col items-center justify-center mb-5">
                 <div className="w-[120px] h-[120px] rounded-full  border-4 border-white dark:border-[#101010] ring-4 ring-violet-600 bg-violet-600 text-white text-3xl flex items-center justify-center"> جوینده</div>
                 <p className="  mt-2 text-xl text-violet-600 tracking-wide">AFghanistan Online Market </p>
             </div>
             <form onSubmit={handleLogin}  className="flex flex-col ">
-                <input type="text" value={formDate.email} name="email" onChange={data} placeholder="someone@exampe.com"  className="w-full mb-4 px-6 bg-white py-3 border border-gray-400 shadow rounded-full focus:ring-1 focus:ring-violet-500 outline-none dark:bg-[#232323] "/>
+                <input type="text" value={formDate.email} name="email" onChange={data} placeholder="someone@exampe.com"  className="w-full mb-4 px-6 bg-white py-3 border border-gray-400 shadow rounded-full focus:ring-1 focus:ring-violet-500 outline-none dark:bg-[#232323]  "/>
                  {(formErrors.email || formDate.email)&& !isValidEmail(formDate.email)  && ( <p className="text-red-500 text-xs mt-1 ml-4">   {formErrors.email || "Email must be a valid email address."}  </p>  )}
                 <div className="w-full relative">
                     <input  type={showPassword ? "text" : "password"} value={formDate.password} name="password" onChange={data} placeholder="*******"  className="w-full px-6 py-3  shadow rounded-full bg-white border border-gray-400 focus:ring-1 focus:ring-violet-500 outline-none dark:bg-[#232323] "/>
@@ -110,9 +110,9 @@ import Image from "next/image";
                 <button   type="submit"  disabled={!agree} className={`bg-violet-600 transition duration-300 hover:bg-violet-500 text-white px-4 py-3 rounded-full text-xl font-semibold w-full flex  items-center justify-center  	 ${!agree ? "opacity-40 cursor-not-allowed" : ""}	 `}><span> Login</span></button>
                 <div className=" flex items-center px-4 my-5">
 			        <span className="px-4 text-[16px] tracking-wide">Don not have an account ?		</span> 
-                    <span  className=" text-violet-600  text-[16px] tracking-wide"> Registration	</span>
+                    <Link href="/RegisterMobile"  className=" text-violet-600  text-[16px] tracking-wide"> Registration	</Link>
 		 	    </div>
-                <button  type="button" onClick={handleGoogleLogin}   className={` px-8 py-2 rounded-full border-2 border-black w-full flex items-center justify-between text-xl   tracking-wide ${    !agree ? "opacity-40 cursor-not-allowed" : ""}`} >Sign with Google <Image src="/google.png" alt="google" width={40} height={40} /></button>
+                <button  type="button" onClick={handleGoogleLogin}   className={` px-8 py-2 rounded-full border-2 border-black dark:border-gray-400 dark:text-white dark:bg-[#101010] w-full flex items-center justify-between text-xl   tracking-wide ${    !agree ? "opacity-40 cursor-not-allowed" : ""}`} >Sign with Google <Image src="/google.png" alt="google" width={40} height={40} /></button>
                 <div className="flex items-center gap-2 my-5">
                     <input className={`w-5 h-5 border-2 border-black rounded ${agree ? "bg-violet-500": ""}`} type="checkbox" checked={agree}   id="agree" onChange={(e)=> setAgree(e.target.checked)} />
                     <label htmlFor="agree" className="text-md tracking-wide"> I agree to the Privacy Policy <Link href="/Privacy" className="text-violet-500 underline-none tracking-wide underline">Privacy Policy</Link></label>
