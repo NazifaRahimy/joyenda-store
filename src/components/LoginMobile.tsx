@@ -93,7 +93,7 @@ import Image from "next/image";
 
  
     return ( 
-        <div className="w-full h-screen dark:bg-[#101010] text-white bg-gray-100 fixed top-0 left-0 px-8 py-5 z-30">
+        <div className="w-full h-screen dark:bg-[#101010] dark:text-white bg-gray-100 fixed top-0 left-0 px-8 py-5 z-30">
             <div className="w-full h-auto mt-5 gap-5  flex flex-col items-center justify-center mb-5">
                 <div className="w-[120px] h-[120px] rounded-full  border-4 border-white dark:border-[#101010] ring-4 ring-violet-600 bg-violet-600 text-white text-3xl flex items-center justify-center"> جوینده</div>
                 <p className="  mt-2 text-xl text-violet-600 tracking-wide">AFghanistan Online Market </p>
