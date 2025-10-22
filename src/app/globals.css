@@ -1,8 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes sonarWave {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.85);
+  }
+  75% {
+    transform: scale(1);
+  }
+}
 
-input:-webkit-autofill {
+.logo-joyenda {
+  object-fit: cover;
+  border-radius: 50%;
+  animation: sonarWave  1s infinite 
+ease-in-out;
+animation-delay: 1000ms;
+}
+
+
+/* input:-webkit-autofill {
   background-color: #ffffff !important;
   -webkit-text-fill-color: black !important;
   caret-color: black;
@@ -10,7 +30,7 @@ input:-webkit-autofill {
 }
 
 .dark input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #232323 inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #101010 inset !important;
   -webkit-text-fill-color: white !important;
 }
 
@@ -18,4 +38,4 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
-}
+} */

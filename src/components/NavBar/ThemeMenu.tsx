@@ -1,59 +1,34 @@
-"use client";  
-import { useTheme } from "next-themes";
-import { useState, useEffect, useRef } from "react";
-import { MdOutlineDarkMode, MdOutlineLightMode, MdSettings } from "react-icons/md";
+"use client"
+import { useState, useEffect } from "react";
+import { IoMdSunny } from "react-icons/io";
+import { MdNightlight } from "react-icons/md";
 
-export default function ThemeMenu () {
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    const [open, setOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => setMounted(true), []);
+const ThemeMenu = () => {
+  const [theme, setTheme] = useState("day"); 
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setOpen(false);
-            }    
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "night" || savedTheme === "day") {
+            setTheme(savedTheme);
+        }
     }, []);
 
-    if (!mounted) return null;
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        if (theme === "night") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme]);
 
-    const renderIcon = () => {
-        if (theme === "light") return <MdOutlineLightMode size={22} />;
-        if (theme === "dark") return <MdOutlineDarkMode size={22} />;
-        return <MdSettings size={22} />; // system
-    };
-
-    return (
-        <div className="relative hidden md:flex justify-center" ref={dropdownRef}>
-            <button onClick={() => setOpen(!open)}
-            className="cursor-pointer outline-none py-1 flex items-center justify-center  rounded px-3 hover:bg-violet-200 hover:text-violet-700 transition-colors duration-300 dark:text-white dark:hover:bg-violet-950">
-                {renderIcon()}     
-            </button>
-            {open && (
-                <div className="absolute z-20 top-12 w-40 bg-white dark:bg-[#191919] dark:border-violet-900 border border-violet-200 rounded-lg shadow-lg">
-                  <div className="flex p-1 flex-col text-gray-700 text-lg">
-                    <button className="flex items-center gap-2 px-4 py-1 rounded hover:bg-violet-200 hover:text-violet-700 transition-colors dark:text-white dark:hover:bg-violet-950"
-                     onClick={() => { setTheme("light"); setOpen(false);}} >
-                        <MdOutlineLightMode /> روز
-                    </button>
-                    <button
-                    className="flex items-center gap-2 px-4 py-1 rounded hover:bg-violet-200 hover:text-violet-700 transition-colors dark:text-white dark:hover:bg-violet-950"
-                    onClick={() => { setTheme("dark"); setOpen(false);}} >
-                        <MdOutlineDarkMode size={20} /> شب
-                    </button>
-                    <button  className="flex items-center gap-2 px-4 py-1 rounded hover:bg-violet-200 hover:text-violet-700 transition-colors dark:text-white dark:hover:bg-violet-950"
-                    onClick={() => { setTheme("system"); setOpen(false); }} >
-                        <MdSettings size={20} /> سیستم
-                    </button>
-                </div>
-            </div>
-        )}
+  return (
+    <div className="px-1 md:px-2 h-9 box-border bg-gray-100 dark:bg-[#282828] rounded-full gap-2 flex items-center">
+        <button onClick={() => setTheme("night")} className={`p-1 rounded-full text-xl transition-all duration-200 ${ theme === "night" ? "bg-white text-slate-700 " : " text-slate-700" }`} ><MdNightlight /></button>
+        <button onClick={() => setTheme("day")} className={`text-xl font-bold p-1 rounded-full transition-all duration-200 ${ theme === "day" ? "bg-white text-yellow-500 shadow-md" : " text-yellow-500" }`} ><IoMdSunny /></button>
     </div>
   );
-}
+};
+
+export default ThemeMenu;
+1

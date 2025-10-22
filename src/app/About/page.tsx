@@ -1,13 +1,11 @@
 import { IoMdCheckmark, IoIosAdd } from "react-icons/io";
 import Link from "next/link";
-import AboutHeader from "@/components/HeaderMobile/AboutHeader";
 import Fotter from "@/components/Fotter";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 const About = () => {
     return ( 
       <>
-        <main className="fixed top-0 left-0 max-w-7xl h-screen overflow-auto  mx-auto bg-white dark:bg-[#181818] dark:text-white w-full  p-4   z-[1000] md:relative md:top-5 md:left-0 md:h-auto md:z-auto">
-        <AboutHeader/>
+        <main className="  max-w-7xl   mx-auto bg-white dark:bg-[#181818] dark:text-white w-full  p-4   z-[1000] md:relative md:top-5 md:left-0 md:h-auto md:z-auto">
         <div className=" w-full container mx-auto px-8 py-13 mt-28">
             <h1 className="text-4xl font-semibold text-center tracking-tight">About Joyenda Store</h1>
             <p  className="text-center mt-3 text-gray-400 text-xl tracking-tight">Joyenda : Online of Afghanistan  Marketplace for Buying and Selling</p>

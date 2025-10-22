@@ -1,9 +1,12 @@
-
+"use client"
 
 export default function Home() {
+  // const name = localStorage.getItem("auth-name")
+  // const email = localStorage.getItem("auth-email")
   return (
-   <div className="bg-red-500 text-3xl underline py-4">
-
+   <div className="text-3xl underline py-4">
+     {/* <p>name: {name}</p>
+     <p>email: {email}</p> */}
      <h1 className="text-3xl font-bold underline text-violet-600">
       Hello Joyenda!
     </h1>
@@ -17,6 +20,7 @@ export default function Home() {
         items, Joyenda Store brings everything you need right to your
         fingertips.
       </p>
+  
    </div>
   );
 }

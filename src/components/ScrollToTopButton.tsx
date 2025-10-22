@@ -20,7 +20,7 @@ export default function ScrollToTopButton() {
      return (
 
        (isVisible && (
-          <button onClick={ScrollTop}  className="fixed bottom-20 md:bottom-6 right-8 p-3 rounded-full bg-violet-600 text-white shadow-sm hover:bg-violet-700 transition duration-300 z-50 text-sm">
+          <button onClick={ScrollTop}  className="fixed bottom-20 md:bottom-6 right-8 p-3 rounded-md bg-violet-600 text-white shadow-sm hover:bg-violet-700 transition duration-300 z-50 text-sm">
             <FaArrowUp />
        </button>
       ))
