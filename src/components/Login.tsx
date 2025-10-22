@@ -64,7 +64,7 @@ import Image from "next/image";
             if (Object.keys(errors).length > 0) return;
 
             try {
-                const response = await fetch("http://localhost:4000/login", {
+                const response = await fetch("http://localhost:4000/lagin", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: formDate.email, password: formDate.password }),
@@ -76,8 +76,10 @@ import Image from "next/image";
                     localStorage.setItem("auth-token", token);
                     localStorage.setItem("auth-name", data.first_name);
                     localStorage.setItem("auth-email", data.email);
+                    window.dispatchEvent(new Event("authChange"));
                     setFormDate({ email: "", password: "" });
                     router.replace("/");
+                    setLogin(false)
                 } else {
                     alert(data.message || "Login failed");
                 }
