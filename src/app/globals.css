@@ -14,6 +14,8 @@
 }
 
 .logo-joyenda {
+  /* width: 80px; */
+  /* height: 80px; */
   object-fit: cover;
   border-radius: 50%;
   animation: sonarWave  1s infinite 
@@ -22,7 +24,7 @@ animation-delay: 1000ms;
 }
 
 
-/* input:-webkit-autofill {
+input:-webkit-autofill {
   background-color: #ffffff !important;
   -webkit-text-fill-color: black !important;
   caret-color: black;
@@ -38,4 +40,4 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
-} */
+}
